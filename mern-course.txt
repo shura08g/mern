@@ -1,0 +1,188 @@
+Prepare:
+1. Install WebStorm
+2. Install nodejs
+
+1. Run WebStorm
+2. Create new project: mern-course
+3. Run Terminal (Alt+F12)
+D:\WebStormProject\mern-course>npm init
+package name: (mern-course)
+version: (1.0.0)
+description: MERN stack
+entry point: (index.js) app.js
+tert command:
+git repository:
+keywords: mern, react
+author: Alexandr Kravchuk <shura08g@gmail.com>
+license: (ISC)
+
+About to write to D:\WebStormProject\mern-course\package.json:
+
+{
+  "name": "mern-course",
+  "version": "1.0.0",
+  "description": "MERN (Mongo, Express, React, Node) stack",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mern",
+    "react"
+  ],
+  "author": "Alexandr Kravchuk <shura08g@gmail.com>",
+  "license": "ISC"
+}
+Is this OK? (yes)
+
+
+4. create app.js
+5. Install dependies
+D:\WebStormProject\mern-course>npm install express mongoose
++ express@4.17.1
++ mongoose@5.11.8
+
+D:\WebStormProject\mern-course>npm install -D nodemon concurrently
++ concurrently@5.3.0
++ nodemon@2.0.6
+
+6. Change scripts
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  to
+   "scripts": {
+      "start": "node app.js",
+      "server": "nodemon app.js"
+      "client": "npm run start --prefix client",
+      "dev": "concurrently \"npm run server\" \"npm run client\"",
+  },
+  
+7. Change app.js
+console.log("App")
+  
+D:\WebStormProject\mern-course>npm run server
+> nodemon app.js
+
+[nodemon] 2.0.6
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `node app.js`
+App
+
+
+8. Go to mongodb.com and create account or "sign in"  
+https://cloud.mongodb.com/v2/5fe9d48b06a7bd6525fbadbe#clus
+Create New Project
+Name Your Project: mern
+Create a Starter Cluster
+connect -> add ip address -> Add you current ip address
+
+Create a Database User
+Username: shura08gAdmin
+Password: 12Impossible!@1
+
+Choose a connection method:
+- Connect your application  Copy
+mongodb+srv://shura08gAdmin:<password>@cluster0.hm0n0.mongodb.net/<dbname>?retryWrites=true&w=majority
+
+9. In "config" create "default.json", "prodaction.json"
+{
+  "port": 5000,
+  "jwtSecret": "alexandr youtube mern",
+  "mongoUri": "mongodb+srv://shura08gAdmin:12Impossible!@1@cluster0.hm0n0.mongodb.net/app?retryWrites=true&w=majority"
+"
+}
+
+10. Create folder "routes"
+11. In "routes" create "auth.routes.js", "link.routes.js", "redirect.routes.js"
+
+12. Create folder "models"
+13. In "models" create "User.js", "Link.js"
+
+14. D:\WebStormProject\mern-course>npm i bcryptjs
++ bcryptjs@2.4.3
+
+15. D:\WebStormProject\mern-course>npm i express-validator
++ express-validator@6.9.0
+
+16. D:\WebStormProject\mern-course>npm i jsonwebtoken
++ jsonwebtoken@8.5.1
+
+front-end
+17. D:\WebStormProject\mern-course>npx create-react-app client
++ react@17.0.1
++ react-scripts@4.0.1
++ react-dom@17.0.1
++ cra-template@1.1.1
+
+D:\WebStormProject\mern-course>cd client
+D:\WebStormProject\mern-course\client>rm -rf node_modules
+
+D:\WebStormProject\mern-course\client>npm i
+D:\WebStormProject\mern-course\client>cd..
+D:\WebStormProject\mern-course\npm run dev
+http://localhost:3000/
+
+https://materializecss.com/getting-started.html
+18. D:\WebStormProject\mern-course>cd client
+19. D:\WebStormProject\mern-course\client>npm install materialize-css@next
++ materialize-css@1.0.0-rc.2
+
+20. D:\WebStormProject\mern-course\client>npm install react-router-dom
++ react-router-dom@5.2.0
+
+21. Create folder "pages" in D:\WebStormProject\mern-course\client\src
+22. In "pages" create "AuthPage.js", "CreatePage.js", "DetailPage.js", "LinksPage.js"
+
+23. Create folder "hooks" in D:\WebStormProject\mern-course\client\src
+24. In "hooks" create "http.hook.js", "message.hook.js", "auth.hook.js"
+
+25. Create folder "conext" in D:\WebStormProject\mern-course\client\src
+26. In "conext" create "AuthContext.js"
+
+27. Create folder "components" in D:\WebStormProject\mern-course\client\src
+28. In "components" create "Navbar.js", "Loader.js", "LinkCard.js", "LinksList.js"
+
+back-end
+29. Create folder "middleware" in D:\WebStormProject\mern-course\
+30. In "middleware" create "auth.middleware.js"
+
+31. D:\WebStormProject\mern-course>npm i shortid
++ shortid@2.2.16
+
+https://www.npmjs.com/package/cross-env
+32. D:\WebStormProject\mern-course>npm install --save-dev cross-env
++ cross-env@7.0.3
+
+33. D:\WebStormProject\mern-course>npm run client:build
+
+34. Create .gitignore in D:\WebStormProject\mern-course>
+.idea
+node_modules
+
+35. In Github create new repository
+…or create a new repository on the command line
+echo "# mern" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/shura08g/mern.git
+git push -u origin main
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/shura08g/mern.git
+git branch -M main
+git push -u origin main
+
+D:\WebStormProject\mern-course>git init
+D:\WebStormProject\mern-course>git add .
+D:\WebStormProject\mern-course>git config --global user.email "shura08g@gmail.com"
+D:\WebStormProject\mern-course>git config --global user.name "shura08g"
+D:\WebStormProject\mern-course>git commit -m "initial"
+D:\WebStormProject\mern-course>git remote add origin https://github.com/shura08g/mern.git
+D:\WebStormProject\mern-course>git push -u origin master
+
+
